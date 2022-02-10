@@ -14,5 +14,5 @@ printf("%d\n", res);
 int main()
 {
 	int res;
-	F("asdf\n");
+	F("asdf%%\n");
 }
