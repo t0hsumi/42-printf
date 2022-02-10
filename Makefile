@@ -23,7 +23,10 @@ $(TEST): $(NAME) $(T_OBJS)
 	$(CC) $(CFLAGS) -o $(TEST) $(T_OBJS) $(NAME)
 
 test: $(TEST)
-	exec ./$(TEST)
+	exec ./$(TEST) > ans.txt
+	$(CC) $(CFLAGS) -D FT_PRINTF -o $(TEST) $(T_OBJS) $(NAME)
+	exec ./$(TEST) > solve.txt
+	diff -y ans.txt solve.txt
 
 clean:
 	rm -f $(OBJS)

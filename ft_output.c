@@ -1,5 +1,18 @@
 #include "ft_printf.h"
 
+void ft_percent(va_list *ap, t_flag *convert)
+{
+	convert->putlen = 1;
+	convert->field = (convert->field <= 1 ? 0 : convert->field - convert->putlen);
+	if (!convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+	else (convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar('0', convert->field);
+	write(1, '%', 1);
+	if (convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+}
+
 int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
 {
 	if (convert->specifier == -1)

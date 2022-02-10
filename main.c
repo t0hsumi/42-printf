@@ -3,13 +3,16 @@
 
 #ifdef FT_PRINTF
 #define F(...) \
-	ft_printf(__VA_ARGS__);
+res = ft_printf(__VA_ARGS__); \
+printf("%d\n", res);
 #else
 #define F(...) \
-	printf(__VA_ARGS__);
+res = printf(__VA_ARGS__); \
+printf("%d\n", res);
 #endif
 
 int main()
 {
+	int res;
 	F("asdf\n");
 }

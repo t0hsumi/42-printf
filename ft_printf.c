@@ -45,7 +45,7 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 	int num;
 
 	(*head)++;
-	ft_init_flag(&convert);
+	ft_init_conv(&convert);
 	while ((num = my_strchr("#0- +", fmt[(*head)])) >= 0)
 	{
 		(*head)++;
@@ -58,7 +58,7 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 		convert.acc = ft_substr_n(fmt, head);
 	}
 	convert.specifier = my_strchr("cspdiuxX%", fmt[(*head)]);
-	ft_conv_print();
+	return (ft_conv_print(fmt, tail, head, ap, &convert));
 }
 
 int ft_print_str(const char *fmt, int *tail, int *head)

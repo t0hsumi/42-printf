@@ -15,6 +15,27 @@ typedef struct	s_flag
 	int putlen;
 }				t_flag;
 
+enum
+{
+	c,
+	s,
+	p,
+	d,
+	i,
+	u,
+	x,
+	X,
+	precent,
+};
+
+enum
+{
+	SHARP,
+	ZERO,
+	SPACE,
+	MINUS,
+	PLUS,
+};
 
 int ft_printf(const char *fmt, ...);
 int ft_print_str(const char *fmt, int *tail, int *head);
@@ -31,19 +52,7 @@ void ft_char(va_list *ap, t_flag *convert);
 void ft_str(va_list *ap, t_flag *convert);
 void ft_pointer(va_list *ap, t_flag *convert);
 void ft_percent(va_list *ap, t_flag *convert);
-
-enum
-{
-	c,
-	s,
-	p,
-	d,
-	i,
-	u,
-	x,
-	X,
-	precent,
-};
+int ft_isdigit(char c);
 
 
 #endif
