@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
+#ifdef FT_PRINTF
+#define F(...) \
+	ft_printf(__VA_ARGS__);
+#else
+#define F(...) \
+	printf(__VA_ARGS__);
+#endif
+
 int main()
 {
-	printf("%d\n\n", ft_printf("asdfasd%fasdf\n", 0.05));
-
-	printf("%d\n", printf("asdfasd%fasdf\n", 0.05));
+	F("asdf\n");
 }
