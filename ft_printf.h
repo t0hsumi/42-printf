@@ -23,6 +23,14 @@ int ft_substr_n(const char *fmt, int *head);
 int my_strchr(const char *s, int c);
 void ft_init_conv(t_flag *convert);
 int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert);
+int ft_non_specifier(const char *fmt, int *tail, int *head, va_list *convert);
+void ft_int(va_list *ap, t_flag *convert);
+void ft_hex(va_list *ap, t_flag *convert);
+void ft_unsigned(va_list *ap, t_flag *convert);
+void ft_char(va_list *ap, t_flag *convert);
+void ft_str(va_list *ap, t_flag *convert);
+void ft_pointer(va_list *ap, t_flag *convert);
+void ft_percent(va_list *ap, t_flag *convert);
 
 enum
 {
