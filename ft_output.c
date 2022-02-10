@@ -1,14 +1,26 @@
 #include "ft_printf.h"
 
-void ft_percent(va_list *ap, t_flag *convert)
+void my_putchar(int c, int len)
+{
+	char *str;
+	int i;
+
+	str = (char *)malloc(sizeof(char) * (len + 1LL));
+	i = 0;
+	while (i < len)
+		str[i++] = c;
+	write(1, str, len);
+}
+
+void ft_percent(t_flag *convert)
 {
 	convert->putlen = 1;
 	convert->field = (convert->field <= 1 ? 0 : convert->field - convert->putlen);
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
-	else (convert->flag[ZERO] && !convert->flag[MINUS])
+	else if (convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar('0', convert->field);
-	write(1, '%', 1);
+	write(1, "%", 1);
 	if (convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 }
@@ -31,6 +43,6 @@ int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *co
 	else if (convert->specifier == p)
 		ft_pointer(ap, convert);
 	else
-		ft_precent(ap, convert);
+		ft_percent(convert);
 	return (0);
 }
