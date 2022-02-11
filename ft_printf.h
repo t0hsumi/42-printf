@@ -34,8 +34,8 @@ enum
 {
 	SHARP,
 	ZERO,
-	SPACE,
 	MINUS,
+	SPACE,
 	PLUS,
 };
 

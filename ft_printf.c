@@ -46,11 +46,12 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 
 	(*head)++;
 	ft_init_conv(&convert);
-	printf("now : %c", fmt[(*head)]);
-	while ((num = my_strchr("#0- +", fmt[(*head)])) >= 0)
+	num = my_strchr("#0- +", fmt[(*head)]);
+	while (num >= 0)
 	{
 		(*head)++;
 		convert.flag[num] = 1;
+		num = my_strchr("#0- +", fmt[(*head)]);
 	}
 	convert.field = ft_substr_n(fmt, head);
 	if (fmt[(*head)] == '.')

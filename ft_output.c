@@ -16,8 +16,6 @@ void ft_percent(t_flag *convert)
 {
 	convert->putlen = 1;
 	convert->field = (convert->field <= 1 ? 0 : convert->field - 1);
-	/* printf("minus : %d\nzero : %d\n", MINUS, ZERO); */
-	/* printf("minus : %d\nzero : %d\n", convert->flag[MINUS], convert->flag[ZERO]); */
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
