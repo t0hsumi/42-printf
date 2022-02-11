@@ -87,8 +87,7 @@ int ft_printf(const char *fmt, ...)
 		if (fmt[head] != '%')
 			res += ft_print_str(fmt, &tail, &head);
 		else
-			return (0);
-			/* res += ft_proc_per(fmt, &tail, &head, &ap); */
+			res += ft_proc_per(fmt, &tail, &head, &ap);
 	}
 	va_end(ap);
 	return (res);

@@ -24,6 +24,51 @@ void ft_percent(t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
+int ft_non_specifier(const char *fmt, int *tail, int *head, t_flag *convert)
+{
+	(void)fmt;
+	(void)tail;
+	(void)head;
+	(void)convert;
+	return 0;
+}
+
+void ft_int(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
+void ft_hex(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
+void ft_unsigned(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
+void ft_char(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
+void ft_str(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
+void ft_pointer(va_list *ap, t_flag *convert)
+{
+	(void)ap;
+	(void)convert;
+}
+
 int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
 {
 	if (convert->specifier == -1)
