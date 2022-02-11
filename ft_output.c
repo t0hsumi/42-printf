@@ -2,10 +2,9 @@
 
 void my_putchar(int c, int len)
 {
-	char *str;
+	char str[len + 1];
 	int i;
 
-	str = (char *)malloc(sizeof(char) * (len + 1LL));
 	i = 0;
 	while (i < len)
 		str[i++] = c;
@@ -42,7 +41,6 @@ int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *co
 		ft_str(ap, convert);
 	else if (convert->specifier == p)
 		ft_pointer(ap, convert);
-	else
-		ft_percent(convert);
+	else ft_percent(convert);
 	return (0);
 }
