@@ -35,7 +35,7 @@ int ft_substr_n(const char *fmt, int *head)
 
 	res = 0;
 	while (ft_isdigit(fmt[(*head)]))
-		res += res * 10 + (fmt[(*head)++] - '0');
+		res = res * 10 + (fmt[(*head)++] - '0');
 	return (res);
 }
 
@@ -46,6 +46,7 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 
 	(*head)++;
 	ft_init_conv(&convert);
+	printf("now : %c", fmt[(*head)]);
 	while ((num = my_strchr("#0- +", fmt[(*head)])) >= 0)
 	{
 		(*head)++;

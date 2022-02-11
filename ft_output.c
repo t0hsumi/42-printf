@@ -8,13 +8,16 @@ void my_putchar(int c, int len)
 	i = 0;
 	while (i < len)
 		str[i++] = c;
+	str[i] = '\0';
 	write(1, str, len);
 }
 
 void ft_percent(t_flag *convert)
 {
 	convert->putlen = 1;
-	convert->field = (convert->field <= 1 ? 0 : convert->field - convert->putlen);
+	convert->field = (convert->field <= 1 ? 0 : convert->field - 1);
+	/* printf("minus : %d\nzero : %d\n", MINUS, ZERO); */
+	/* printf("minus : %d\nzero : %d\n", convert->flag[MINUS], convert->flag[ZERO]); */
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
@@ -87,5 +90,5 @@ int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *co
 	else if (convert->specifier == p)
 		ft_pointer(ap, convert);
 	else ft_percent(convert);
-	return (0);
+	return (convert->field + convert->putlen);
 }

@@ -9,7 +9,6 @@ SRCS = ft_printf.c ft_output.c ft_utils.c
 OBJS = $(SRCS:.c=.o)
 
 T_SRCS = main.c
-T_OBJS = $(T_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -19,13 +18,11 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-$(TEST): $(NAME) $(T_OBJS)
-	$(CC) $(CFLAGS) -o $(TEST) $(T_OBJS) $(NAME)
-
-test: $(TEST)
-	exec ./$(TEST) > ans.txt
-	$(CC) $(CFLAGS) -D FT_PRINTF -o $(TEST) $(T_SRCS) $(NAME)
-	exec ./$(TEST) > solve.txt
+test: $(NAME)
+	@$(CC) $(CFLAGS) -o $(TEST) $(T_SRCS) $(NAME)
+	@exec ./$(TEST) > ans.txt
+	@$(CC) $(CFLAGS) -D FT_PRINTF -o $(TEST) $(T_SRCS) $(NAME)
+	@exec ./$(TEST) > solve.txt
 	diff -y ans.txt solve.txt
 
 clean:
