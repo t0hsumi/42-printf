@@ -2,7 +2,7 @@ NAME = libftprintf.a
 TEST = printf.exe
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 DEBUG = 
 
 SRCS = ft_printf.c ft_output.c ft_utils.c

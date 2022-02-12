@@ -39,6 +39,7 @@ enum
 	PLUS,
 };
 
+void   ft_putnbr_fd(int n, int fd);
 int ft_printf(const char *fmt, ...);
 int ft_print_str(const char *fmt, int *tail, int *head);
 int ft_proc_per(const char *fmt, int *tail, int *head,va_list *ap);
