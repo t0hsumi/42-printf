@@ -49,7 +49,7 @@ void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
 		ft_putnbr_hex_fd(n / 16, fd, convert);
 		ft_putnbr_hex_fd(n % 16, fd, convert);
 	}
-	else if (convert->specifier == x)
+	else if (convert->specifier == x || convert->specifier == p)
 		write(fd, &"0123456789abcdef"[(int)n], 1);
 	else
 		write(fd, &"0123456789ABCDEF"[(int)n], 1);
