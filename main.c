@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 #ifdef FT_PRINTF
@@ -14,5 +15,5 @@ printf("%d\n", res);
 int main()
 {
 	int res;
-	F("asdf%d\n", 62);
+	F("[%#010x]\n", 23);
 }

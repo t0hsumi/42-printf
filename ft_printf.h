@@ -4,6 +4,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 # include <stdio.h>
 
@@ -40,6 +41,8 @@ enum
 };
 
 void   ft_putnbr_fd(int n, int fd);
+void   ft_putnbr_u_fd(unsigned long long n, int fd);
+void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert);
 int ft_printf(const char *fmt, ...);
 int ft_print_str(const char *fmt, int *tail, int *head);
 int ft_proc_per(const char *fmt, int *tail, int *head,va_list *ap);

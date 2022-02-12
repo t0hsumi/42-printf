@@ -12,6 +12,11 @@ void   ft_putnbr_fd(int n, int fd)
 	long   ln;
 
 	ln = n;
+	if (ln == INT_MIN)
+	{
+		write(1, "2147483648", 10);
+		return;
+	}
 	if (ln < 0)
 	{
 		write(fd, "-", 1);
@@ -24,4 +29,28 @@ void   ft_putnbr_fd(int n, int fd)
 	}
 	else
 		write(fd, &"0123456789"[(int)ln], 1);
+}
+
+void   ft_putnbr_u_fd(unsigned long long n, int fd)
+{
+	if (n >= 10)
+	{
+		ft_putnbr_u_fd(n / 10, fd);
+		ft_putnbr_u_fd(n % 10, fd);
+	}
+	else
+		write(fd, &"0123456789"[(int)n], 1);
+}
+
+void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
+{
+	if (n >= 16)
+	{
+		ft_putnbr_hex_fd(n / 16, fd, convert);
+		ft_putnbr_hex_fd(n % 16, fd, convert);
+	}
+	else if (convert->specifier == x)
+		write(fd, &"0123456789abcdef"[(int)n], 1);
+	else
+		write(fd, &"0123456789ABCDEF"[(int)n], 1);
 }

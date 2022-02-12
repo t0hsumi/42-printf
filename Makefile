@@ -23,7 +23,7 @@ test: $(NAME)
 	@exec ./$(TEST) > ans.txt
 	@$(CC) $(CFLAGS) -D FT_PRINTF -o $(TEST) $(T_SRCS) $(NAME)
 	@exec ./$(TEST) > solve.txt
-	diff -y ans.txt solve.txt
+	@diff -y ans.txt solve.txt
 
 clean:
 	rm -f $(OBJS)
