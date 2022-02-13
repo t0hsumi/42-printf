@@ -67,6 +67,8 @@ void ft_int(va_list *ap, t_flag *convert)
 	}
 	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
 	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
+	if (output < 0 && convert->field > 0)
+		convert->field -= 1;
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
@@ -161,8 +163,17 @@ void ft_unsigned(va_list *ap, t_flag *convert)
 
 void ft_char(va_list *ap, t_flag *convert)
 {
-	(void)ap;
-	(void)convert;
+	unsigned char c;
+
+	c = (unsigned char)va_arg(*ap, int);
+	convert->putlen = 1;
+	convert->acc = 0;
+	convert->field -= convert->putlen;
+	if (!convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+	my_putchar(c, 1);
+	if (convert->flag[MINUS])
+		my_putchar(' ', convert->field);
 }
 
 void ft_str(va_list *ap, t_flag *convert)

@@ -15,5 +15,5 @@ printf("%d\n", res);
 int main()
 {
 	int res;
-	F("[%p]\n", (unsigned long long)13981398139813982);
+	F("[%-5c]\n", 'c');
 }
