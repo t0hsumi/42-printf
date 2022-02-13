@@ -15,5 +15,5 @@ printf("%d\n", res);
 int main()
 {
 	int res;
-	F("[%-5c]\n", 'c');
+	F("[%08.3s]\n", "adsf");
 }

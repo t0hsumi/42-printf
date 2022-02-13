@@ -1,5 +1,10 @@
 #include "ft_printf.h"
 
+int my_putstr(char *str, len)
+{
+	write(1, str, len);
+}
+
 int ft_isdigit(char c)
 {
 	if ('0' <= c && c <= '9')
@@ -54,3 +59,14 @@ void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
 	else
 		write(fd, &"0123456789ABCDEF"[(int)n], 1);
 }
+
+size_t ft_strlen(const char *str)
+{
+	size_t res;
+
+	res = 0;
+	while (str[res])
+		res++;
+	return res;
+}
+
