@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include <stdarg.h>
 
 void my_putchar(int c, int len)
 {
@@ -185,14 +184,25 @@ void ft_str(va_list *ap, t_flag *convert)
 	if (!str)
 		str = "(null)";
 	convert->putlen = ft_strlen(str);
-	if (convert->acc == -1)
+	if (convert->acc == -1 || convert->acc >= convert->putlen)
 	{
 		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
 		convert->acc = 0;
 		if (!convert->flag[MINUS])
 			my_putchar(' ', convert->field);
 		my_putstr(str, convert->putlen);
+		if (convert->flag[MINUS])
+			my_putchar(' ', convert->field);
+	}
+	else
+	{
+		convert->putlen = convert->acc;
+		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
+		convert->acc = 0;
 		if (!convert->flag[MINUS])
+			my_putchar(' ', convert->field);
+		my_putstr(str, convert->putlen);
+		if (convert->flag[MINUS])
 			my_putchar(' ', convert->field);
 	}
 }

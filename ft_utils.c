@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int my_putstr(char *str, len)
+void my_putstr(char *str, int len)
 {
 	write(1, str, len);
 }

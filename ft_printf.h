@@ -60,7 +60,7 @@ void ft_pointer(va_list *ap, t_flag *convert);
 void ft_percent(t_flag *convert);
 int ft_isdigit(char c);
 size_t ft_strlen(const char *str);
-int my_putstr(char *str, len);
+void my_putstr(char *str, int len);
 
 
 #endif
