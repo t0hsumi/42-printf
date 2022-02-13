@@ -18,6 +18,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
+bonus: $(NAME)
+
 test: $(NAME)
 	@$(CC) $(CFLAGS) -o $(TEST) $(T_SRCS) $(NAME)
 	@exec ./$(TEST) > ans.txt
@@ -27,9 +29,6 @@ test: $(NAME)
 
 clean:
 	rm -f $(OBJS)
-
-testclean: clean
-	rm -f $(T_OBJS) $(TEST)
 
 fclean: clean
 	rm -f $(NAME)

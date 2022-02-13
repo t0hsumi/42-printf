@@ -61,6 +61,7 @@ void ft_percent(t_flag *convert);
 int ft_isdigit(char c);
 size_t ft_strlen(const char *str);
 void my_putstr(char *str, int len);
+void my_putchar(int c, int len);
 
 
 #endif

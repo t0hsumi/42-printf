@@ -1,21 +1,10 @@
 #include "ft_printf.h"
 
-void my_putchar(int c, int len)
-{
-	char str[len + 1];
-	int i;
-
-	i = 0;
-	while (i < len)
-		str[i++] = c;
-	str[i] = '\0';
-	write(1, str, len);
-}
-
 void ft_percent(t_flag *convert)
 {
 	convert->putlen = 1;
 	convert->field = (convert->field <= 1 ? 0 : convert->field - 1);
+	convert->acc = 0;
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
@@ -207,41 +196,41 @@ void ft_str(va_list *ap, t_flag *convert)
 	}
 }
 
-	void ft_pointer(va_list *ap, t_flag *convert)
-	{
-		unsigned long long num;
-		int digit_len = 0;
-		unsigned long long output;
+void ft_pointer(va_list *ap, t_flag *convert)
+{
+	unsigned long long num;
+	int digit_len = 0;
+	unsigned long long output;
 
-		num = (unsigned long long)va_arg(*ap, unsigned long long);
-		output = num;
-		if (num == 0) digit_len = 1;
-		else{
-			while (num){
-				num /= 16;
-				digit_len++;
-			}
+	num = (unsigned long long)va_arg(*ap, unsigned long long);
+	output = num;
+	if (num == 0) digit_len = 1;
+	else{
+		while (num){
+			num /= 16;
+			digit_len++;
 		}
-		convert->putlen += digit_len + 2;
-		if (convert->acc == 0 && output == 0)
-		{
-			convert->putlen -= 1;
-			convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
-			my_putchar(' ', convert->field);
-			return;
-		}
-		convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
-		convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
-		if (!convert->flag[ZERO] && !convert->flag[MINUS])
-			my_putchar(' ', convert->field);
-		write(1, "0x", 2);
-		if (convert->flag[ZERO] && !convert->flag[MINUS])
-			my_putchar('0', convert->field);
-		my_putchar('0', convert->acc);
-		ft_putnbr_hex_fd(output, 1, convert);
-		if (convert->flag[MINUS])
-			my_putchar(' ', convert->field);
 	}
+	convert->putlen += digit_len + 2;
+	if (convert->acc == 0 && output == 0)
+	{
+		convert->putlen -= 1;
+		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
+		my_putchar(' ', convert->field);
+		return;
+	}
+	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
+	convert->field = (convert->field <= (convert->putlen + convert->acc) ? 0 : convert->field - convert->acc - convert->putlen);
+	if (!convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+	write(1, "0x", 2);
+	if (convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar('0', convert->field);
+	my_putchar('0', convert->acc);
+	ft_putnbr_hex_fd(output, 1, convert);
+	if (convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+}
 
 int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
 {

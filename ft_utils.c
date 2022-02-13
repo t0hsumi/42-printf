@@ -1,5 +1,17 @@
 #include "ft_printf.h"
 
+void my_putchar(int c, int len)
+{
+	char str[len + 1];
+	int i;
+
+	i = 0;
+	while (i < len)
+		str[i++] = c;
+	str[i] = '\0';
+	write(1, str, len);
+}
+
 void my_putstr(char *str, int len)
 {
 	write(1, str, len);
