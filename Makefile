@@ -2,8 +2,8 @@ NAME = libftprintf.a
 TEST = printf.exe
 
 CC = gcc
-CFLAGS = #-Wall -Wextra -Werror
-DEBUG = 
+CFLAGS = -Wall -Wextra -Werror
+DEBUG = -g
 
 SRCS = ft_printf.c ft_output.c ft_utils.c
 OBJS = $(SRCS:.c=.o)
@@ -19,6 +19,14 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 bonus: $(NAME)
+
+solve: $(NAME)
+	@$(CC) $(CFLAGS) -D FT_PRINTF -o $(TEST) $(T_SRCS) $(NAME)
+	./$(TEST)
+
+ans: $(NAME)
+	@$(CC) $(CFLAGS) -o $(TEST) $(T_SRCS) $(NAME)
+	./$(TEST)
 
 test: $(NAME)
 	@$(CC) $(CFLAGS) -o $(TEST) $(T_SRCS) $(NAME)

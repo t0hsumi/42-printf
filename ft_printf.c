@@ -1,6 +1,5 @@
 #include "./ft_printf.h"
 
-
 void ft_init_conv(t_flag *convert)
 {
 	convert->flag[0] = 0;
