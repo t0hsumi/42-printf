@@ -33,6 +33,8 @@ int ft_substr_n(const char *fmt, int *head)
 	int res;
 
 	res = 0;
+	if (!ft_isdigit(fmt[(*head)]))
+		return -1;
 	while (ft_isdigit(fmt[(*head)]))
 		res = res * 10 + (fmt[(*head)++] - '0');
 	return (res);
@@ -57,6 +59,8 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 	{
 		(*head)++;
 		convert.acc = ft_substr_n(fmt, head);
+		if (convert.acc == -1)
+			convert.acc = 0;
 	}
 	convert.specifier = my_strchr("cspdiuxX%", fmt[(*head)]);
 	return (ft_conv_print(fmt, tail, head, ap, &convert));

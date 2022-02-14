@@ -122,5 +122,5 @@ int main()
 	/* c_test(); */
 	/* percent_test(); */
 	/* s_test(); */
-	F("%.d\n", 0);
+	F("%010d\n", INT_MIN);
 }

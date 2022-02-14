@@ -58,16 +58,16 @@ void ft_int(va_list *ap, t_flag *convert)
 	}
 	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
 	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
-	if (output < 0 && convert->field > 0)
-		convert->field -= 1;
+	if (output < 0){
+		if (convert->field > 0)
+			convert->field -= 1;
+		write(1, "-", 1);
+		output *= -1;
+	}
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar('0', convert->field);
-	if (output < 0){
-		write(1, "-", 1);
-		output *= -1;
-	}
 	if (convert->flag[PLUS] && tmp >= 0)
 		write(1, "+", 1);
 	else if (convert->flag[SPACE] && tmp >= 0)
