@@ -736,7 +736,9 @@ void x_test(){
 int main()
 {
 	int res;
-	x_test();
+	F("%p\n", (unsigned long long)0);
+	F("%.0p\n", (unsigned long long)0);
+	/* x_test(); */
 	/* c_test(); */
 	/* percent_test(); */
 	/* s_test(); */
