@@ -2,8 +2,8 @@ NAME = libftprintf.a
 TEST = printf.exe
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-DEBUG = -g
+CFLAGS = # -Wall -Wextra -Werror
+DEBUG = #-g
 
 SRCS = ft_printf.c ft_output.c ft_utils.c
 OBJS = $(SRCS:.c=.o)

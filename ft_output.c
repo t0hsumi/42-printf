@@ -156,8 +156,10 @@ void ft_char(va_list *ap, t_flag *convert)
 	convert->putlen = 1;
 	convert->acc = 0;
 	convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
-	if (!convert->flag[MINUS])
+	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
+	else if (convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar('0', convert->field);
 	my_putchar(c, 1);
 	if (convert->flag[MINUS])
 		my_putchar(' ', convert->field);
@@ -175,8 +177,10 @@ void ft_str(va_list *ap, t_flag *convert)
 	{
 		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
 		convert->acc = 0;
-		if (!convert->flag[MINUS])
+		if (!convert->flag[MINUS] && !convert->flag[ZERO])
 			my_putchar(' ', convert->field);
+		else if (!convert->flag[MINUS] && convert->flag[ZERO])
+			my_putchar('0', convert->field);
 		my_putstr(str, convert->putlen);
 		if (convert->flag[MINUS])
 			my_putchar(' ', convert->field);
@@ -186,8 +190,10 @@ void ft_str(va_list *ap, t_flag *convert)
 		convert->putlen = convert->acc;
 		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
 		convert->acc = 0;
-		if (!convert->flag[MINUS])
+		if (!convert->flag[MINUS] && !convert->flag[ZERO])
 			my_putchar(' ', convert->field);
+		else if (!convert->flag[MINUS] && convert->flag[ZERO])
+			my_putchar('0', convert->field);
 		my_putstr(str, convert->putlen);
 		if (convert->flag[MINUS])
 			my_putchar(' ', convert->field);
