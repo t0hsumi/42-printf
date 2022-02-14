@@ -5,7 +5,8 @@
 #ifdef FT_PRINTF
 #define F(...) \
 res = ft_printf(__VA_ARGS__); \
-printf("%d\n", res);
+ft_putnbr_fd(res, 1); \
+write(1, "\n", 1);
 #else
 #define F(...) \
 res = printf(__VA_ARGS__); \
