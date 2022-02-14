@@ -736,10 +736,11 @@ void x_test(){
 int main()
 {
 	int res;
-	F("%p\n", (unsigned long long)0);
-	F("%.0p\n", (unsigned long long)0);
+	/* F("%p\n", (unsigned long long)0); */
+	/* F("%.0p\n", (unsigned long long)0); */
 	/* x_test(); */
 	/* c_test(); */
 	/* percent_test(); */
 	/* s_test(); */
+	F("%2147483645d\n", 1);
 }
