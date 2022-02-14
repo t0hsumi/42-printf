@@ -58,15 +58,15 @@ void ft_int(va_list *ap, t_flag *convert)
 	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
 	if (output < 0 && convert->field > 0)
 		convert->field -= 1;
-	if (!convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-	else if (convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar('0', convert->field);
 	if (output < 0){
 		write(1, "-", 1);
 		output *= -1;
 	}
-	else if (convert->flag[PLUS])
+	if (!convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+	else if (convert->flag[ZERO] && !convert->flag[MINUS])
+		my_putchar('0', convert->field);
+	if (convert->flag[PLUS])
 		write(1, "+", 1);
 	else if (convert->flag[SPACE])
 		write(1, " ", 1);
@@ -79,20 +79,19 @@ void ft_int(va_list *ap, t_flag *convert)
 void ft_hex(va_list *ap, t_flag *convert)
 {
 	unsigned long long num;
-	int digit_len = 0;
 	unsigned long long output;
 
 	num = (unsigned int)va_arg(*ap, int);
 	output = num;
-	if (num == 0) digit_len = 1;
+	if (num == 0) convert->putlen = 1;
 	else{
 		while (num){
 			num /= 16;
-			digit_len++;
+			convert->putlen++;
 		}
 	}
-	convert->putlen += digit_len;
-	if (convert->flag[SHARP])
+	convert->putlen += convert->putlen;
+	if (convert->flag[SHARP] && output != 0)
 		convert->putlen += 2;
 	if (convert->acc == 0 && output == 0)
 	{
@@ -101,11 +100,11 @@ void ft_hex(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 		return;
 	}
-	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
-	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
+	convert->acc = (convert->acc <=  convert->putlen ? 0 : convert->acc - convert->putlen);
+	convert->field = (convert->field <= convert->putlen + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
-	if (convert->flag[SHARP])
+	if (convert->flag[SHARP] && output != 0)
 		write(1, (convert->specifier == x ? "0x" : "0X"), 2);
 	if (convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar('0', convert->field);
@@ -118,19 +117,17 @@ void ft_hex(va_list *ap, t_flag *convert)
 void ft_unsigned(va_list *ap, t_flag *convert)
 {
 	unsigned long long num;
-	int digit_len = 0;
 	unsigned long long output;
 
 	num = (unsigned int)va_arg(*ap, int);
 	output = num;
-	if (num == 0) digit_len = 1;
+	if (num == 0) convert->putlen = 1;
 	else{
 		while (num){
 			num /= 10;
-			digit_len++;
+			convert->putlen++; 
 		}
 	}
-	convert->putlen += digit_len;
 	if (convert->acc == 0 && output == 0)
 	{
 		convert->putlen -= 1;
@@ -138,8 +135,8 @@ void ft_unsigned(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 		return;
 	}
-	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
-	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
+	convert->acc = (convert->acc <= convert->putlen ? 0 : convert->acc - convert->putlen); 
+	convert->field = (convert->field <= convert->putlen + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
 	else if (convert->flag[ZERO] && !convert->flag[MINUS])
