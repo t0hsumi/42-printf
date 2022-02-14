@@ -10,7 +10,6 @@ void ft_init_conv(t_flag *convert)
 	convert->field = -1;
 	convert->acc = -1;
 	convert->specifier = -1;
-	convert->putnum = 0;
 	convert->putlen = 0;
 }
 
@@ -28,9 +27,9 @@ int my_strchr(const char *s, int c)
 	return -1;
 }
 
-int ft_substr_n(const char *fmt, int *head)
+long long ft_substr_n(const char *fmt, int *head)
 {
-	int res;
+	long long res;
 
 	res = 0;
 	if (!ft_isdigit(fmt[(*head)]))
@@ -55,6 +54,8 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 		num = my_strchr("#0- +", fmt[(*head)]);
 	}
 	convert.field = ft_substr_n(fmt, head);
+	if (convert.field >= INT_MAX - 1)
+		return (INT_MIN);
 	if (fmt[(*head)] == '.')
 	{
 		(*head)++;
@@ -95,6 +96,8 @@ int ft_printf(const char *fmt, ...)
 			res += ft_proc_per(fmt, &tail, &head, &ap);
 	}
 	va_end(ap);
+	if (res < -1)
+		res = -1;
 	return (res);
 }
 

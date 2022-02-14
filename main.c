@@ -18,7 +18,6 @@ void c_test(){
 	F("%c\n", 'a');
 	F("%10c\n", 'a');
 	F("%-10c\n", 'a');
-	F("%010c\n", 'a');
 }
 
 void percent_test(){
@@ -40,80 +39,55 @@ void s_test(){
 	F("%s\n", "asdfghjkl");
 	F("%3s\n", "asdfghjkl");
 	F("%-3s\n", "asdfghjkl");
-	F("%03s\n", "asdfghjkl");
 	F("%15s\n", "asdfghjkl");
 	F("%-15s\n", "asdfghjkl");
-	F("%015s\n", "asdfghjkl");
 	F("%s.\n", "asdfghjkl");
 	F("%3.s\n", "asdfghjkl");
 	F("%-3.s\n", "asdfghjkl");
-	F("%03.s\n", "asdfghjkl");
 	F("%15.s\n", "asdfghjkl");
 	F("%-15.s\n", "asdfghjkl");
-	F("%015.s\n", "asdfghjkl");
-	F("%.2s\n", "asdfghjkl");
 	F("%3.2s\n", "asdfghjkl");
 	F("%-3.2s\n", "asdfghjkl");
-	F("%03.2s\n", "asdfghjkl");
 	F("%15.2s\n", "asdfghjkl");
 	F("%-15.2s\n", "asdfghjkl");
-	F("%015.2s\n", "asdfghjkl");
 	F("%s.5\n", "asdfghjkl");
 	F("%3.5s\n", "asdfghjkl");
 	F("%-3.5s\n", "asdfghjkl");
-	F("%03.5s\n", "asdfghjkl");
 	F("%15.5s\n", "asdfghjkl");
 	F("%-15.5s\n", "asdfghjkl");
-	F("%015.5s\n", "asdfghjkl");
 	F("%.20s\n", "asdfghjkl");
 	F("%3.20s\n", "asdfghjkl");
 	F("%-3.20s\n", "asdfghjkl");
-	F("%03.20s\n", "asdfghjkl");
 	F("%15.20s\n", "asdfghjkl");
 	F("%-15.20s\n", "asdfghjkl");
-	F("%015.20s\n", "asdfghjkl");
 	char *str = NULL;
 	F("%s\n",str);
 	F("%3s\n",str);
 	F("%-3s\n",str);
-	F("%03s\n",str);
 	F("%15s\n",str);
 	F("%-15s\n",str);
-	F("%015s\n",str);
 	F("%s.\n",str);
 	F("%3.s\n",str);
 	F("%-3.s\n",str);
-	F("%03.s\n",str);
 	F("%15.s\n",str);
 	F("%-15.s\n",str);
-	F("%015.s\n",str);
 	F("%s.2\n",str);
 	F("%3.2s\n",str);
 	F("%-3.2s\n",str);
-	F("%03.2s\n",str);
 	F("%15.2s\n",str);
 	F("%-15.2s\n",str);
-	F("%015.2s\n",str);
 	F("%s.5\n",str);
 	F("%3.5s\n",str);
 	F("%-3.5s\n",str);
-	F("%03.5s\n",str);
 	F("%15.5s\n",str);
 	F("%-15.5s\n",str);
-	F("%015.5s\n",str);
 	F("%.20s\n",str);
 	F("%3.20s\n",str);
 	F("%-3.20s\n",str);
-	F("%03.20s\n",str);
 	F("%15.20s\n",str);
 	F("%-15.20s\n",str);
-	F("%015.20s\n",str);
-	F("%0.0s\n", "asdfghjkl");
-	F("%0.0s\n", str);
 	F("%.s\n", str);
 	F("%.s\n", "asdfghjkl");
-	F("%0.s\n", str);
-	F("%00.s\n", "asdfghjkl");
 }
 
 void d_test(){
@@ -129,12 +103,6 @@ void d_test(){
 	F("%d\n", INT_MIN - 1);
 	F("%d\n", INT_MIN);
 	F("%d\n", INT_MIN + 1);
-	F("%d\n", LONG_MAX - 1);
-	F("%d\n", LONG_MAX);
-	F("%d\n", LONG_MAX + 1);
-	F("%d\n", LONG_MIN - 1);
-	F("%d\n", LONG_MIN);
-	F("%d\n", LONG_MIN + 1);
 
 	F("% 10d\n", -1);
 	F("%10d\n", 0);
@@ -147,12 +115,6 @@ void d_test(){
 	F("%10d\n", INT_MIN - 1);
 	F("%10d\n", INT_MIN);
 	F("%10d\n", INT_MIN + 1);
-	F("%10d\n", LONG_MAX - 1);
-	F("%10d\n", LONG_MAX);
-	F("%10d\n", LONG_MAX + 1);
-	F("%10d\n", LONG_MIN - 1);
-	F("%10d\n", LONG_MIN);
-	F("%10d\n", LONG_MIN + 1);
 
 	F("%.10d\n", -1);
 	F("%.10d\n", 0);
@@ -165,12 +127,6 @@ void d_test(){
 	F("%.10d\n", INT_MIN - 1);
 	F("%.10d\n", INT_MIN);
 	F("%.10d\n", INT_MIN + 1);
-	F("%.10d\n", LONG_MAX - 1);
-	F("%.10d\n", LONG_MAX);
-	F("%.10d\n", LONG_MAX + 1);
-	F("%.10d\n", LONG_MIN - 1);
-	F("%.10d\n", LONG_MIN);
-	F("%.10d\n", LONG_MIN + 1);
 
 	F("%0.0d\n", -1);
 	F("%0.0d\n", 0);
@@ -183,12 +139,6 @@ void d_test(){
 	F("%0.0d\n", INT_MIN - 1);
 	F("%0.0d\n", INT_MIN);
 	F("%0.0d\n", INT_MIN + 1);
-	F("%0.0d\n", LONG_MAX - 1);
-	F("%0.0d\n", LONG_MAX);
-	F("%0.0d\n", LONG_MAX + 1);
-	F("%0.0d\n", LONG_MIN - 1);
-	F("%0.0d\n", LONG_MIN);
-	F("%0.0d\n", LONG_MIN + 1);
 
 	F("%.d\n", -1);
 	F("%.d\n", 0);
@@ -201,12 +151,6 @@ void d_test(){
 	F("%.d\n", INT_MIN - 1);
 	F("%.d\n", INT_MIN);
 	F("%.d\n", INT_MIN + 1);
-	F("%.d\n", LONG_MAX - 1);
-	F("%.d\n", LONG_MAX);
-	F("%.d\n", LONG_MAX + 1);
-	F("%.d\n", LONG_MIN - 1);
-	F("%.d\n", LONG_MIN);
-	F("%.d\n", LONG_MIN + 1);
 
 	F("% d\n", -1);
 	F("% d\n", 0);
@@ -219,12 +163,6 @@ void d_test(){
 	F("% d\n", INT_MIN - 1);
 	F("% d\n", INT_MIN);
 	F("% d\n", INT_MIN + 1);
-	F("% d\n", LONG_MAX - 1);
-	F("% d\n", LONG_MAX);
-	F("% d\n", LONG_MAX + 1);
-	F("% d\n", LONG_MIN - 1);
-	F("% d\n", LONG_MIN);
-	F("% d\n", LONG_MIN + 1);
 
 	F("%+d\n", -1);
 	F("%+d\n", 0);
@@ -237,13 +175,6 @@ void d_test(){
 	F("%+d\n", INT_MIN - 1);
 	F("%+d\n", INT_MIN);
 	F("%+d\n", INT_MIN + 1);
-	F("%+d\n", LONG_MAX - 1);
-	F("%+d\n", LONG_MAX);
-	F("%+d\n", LONG_MAX + 1);
-	F("%+d\n", LONG_MIN - 1);
-	F("%+d\n", LONG_MIN);
-	F("%+d\n", LONG_MIN + 1);
-
 
 	F("%0d\n", -1);
 	F("%0d\n", 0);
@@ -256,12 +187,6 @@ void d_test(){
 	F("%0d\n", INT_MIN - 1);
 	F("%0d\n", INT_MIN);
 	F("%0d\n", INT_MIN + 1);
-	F("%0d\n", LONG_MAX - 1);
-	F("%0d\n", LONG_MAX);
-	F("%0d\n", LONG_MAX + 1);
-	F("%0d\n", LONG_MIN - 1);
-	F("%0d\n", LONG_MIN);
-	F("%0d\n", LONG_MIN + 1);
 
 	F("%0 10d\n", -1);
 	F("%010d\n", 0);
@@ -274,12 +199,6 @@ void d_test(){
 	F("%010d\n", INT_MIN - 1);
 	F("%010d\n", INT_MIN);
 	F("%010d\n", INT_MIN + 1);
-	F("%010d\n", LONG_MAX - 1);
-	F("%010d\n", LONG_MAX);
-	F("%010d\n", LONG_MAX + 1);
-	F("%010d\n", LONG_MIN - 1);
-	F("%010d\n", LONG_MIN);
-	F("%010d\n", LONG_MIN + 1);
 
 	F("%0.10d\n", -1);
 	F("%0.10d\n", 0);
@@ -292,12 +211,6 @@ void d_test(){
 	F("%0.10d\n", INT_MIN - 1);
 	F("%0.10d\n", INT_MIN);
 	F("%0.10d\n", INT_MIN + 1);
-	F("%0.10d\n", LONG_MAX - 1);
-	F("%0.10d\n", LONG_MAX);
-	F("%0.10d\n", LONG_MAX + 1);
-	F("%0.10d\n", LONG_MIN - 1);
-	F("%0.10d\n", LONG_MIN);
-	F("%0.10d\n", LONG_MIN + 1);
 
 	F("%00.0d\n", -1);
 	F("%00.0d\n", 0);
@@ -310,12 +223,6 @@ void d_test(){
 	F("%00.0d\n", INT_MIN - 1);
 	F("%00.0d\n", INT_MIN);
 	F("%00.0d\n", INT_MIN + 1);
-	F("%00.0d\n", LONG_MAX - 1);
-	F("%00.0d\n", LONG_MAX);
-	F("%00.0d\n", LONG_MAX + 1);
-	F("%00.0d\n", LONG_MIN - 1);
-	F("%00.0d\n", LONG_MIN);
-	F("%00.0d\n", LONG_MIN + 1);
 
 	F("%0.d\n", -1);
 	F("%0.d\n", 0);
@@ -328,12 +235,6 @@ void d_test(){
 	F("%0.d\n", INT_MIN - 1);
 	F("%0.d\n", INT_MIN);
 	F("%0.d\n", INT_MIN + 1);
-	F("%0.d\n", LONG_MAX - 1);
-	F("%0.d\n", LONG_MAX);
-	F("%0.d\n", LONG_MAX + 1);
-	F("%0.d\n", LONG_MIN - 1);
-	F("%0.d\n", LONG_MIN);
-	F("%0.d\n", LONG_MIN + 1);
 
 	F("%0 d\n", -1);
 	F("%0 d\n", 0);
@@ -346,12 +247,6 @@ void d_test(){
 	F("%0 d\n", INT_MIN - 1);
 	F("%0 d\n", INT_MIN);
 	F("%0 d\n", INT_MIN + 1);
-	F("%0 d\n", LONG_MAX - 1);
-	F("%0 d\n", LONG_MAX);
-	F("%0 d\n", LONG_MAX + 1);
-	F("%0 d\n", LONG_MIN - 1);
-	F("%0 d\n", LONG_MIN);
-	F("%0 d\n", LONG_MIN + 1);
 
 	F("%0+d\n", -1);
 	F("%0+d\n", 0);
@@ -364,13 +259,6 @@ void d_test(){
 	F("%0+d\n", INT_MIN - 1);
 	F("%0+d\n", INT_MIN);
 	F("%0+d\n", INT_MIN + 1);
-	F("%0+d\n", LONG_MAX - 1);
-	F("%0+d\n", LONG_MAX);
-	F("%0+d\n", LONG_MAX + 1);
-	F("%0+d\n", LONG_MIN - 1);
-	F("%0+d\n", LONG_MIN);
-	F("%0+d\n", LONG_MIN + 1);
-
 
 	F("%-d\n", -1);
 	F("%-d\n", 0);
@@ -383,12 +271,6 @@ void d_test(){
 	F("%-d\n", INT_MIN - 1);
 	F("%-d\n", INT_MIN);
 	F("%-d\n", INT_MIN + 1);
-	F("%-d\n", LONG_MAX - 1);
-	F("%-d\n", LONG_MAX);
-	F("%-d\n", LONG_MAX + 1);
-	F("%-d\n", LONG_MIN - 1);
-	F("%-d\n", LONG_MIN);
-	F("%-d\n", LONG_MIN + 1);
 
 	F("%- 10d\n", -1);
 	F("%-10d\n", 0);
@@ -401,12 +283,6 @@ void d_test(){
 	F("%-10d\n", INT_MIN - 1);
 	F("%-10d\n", INT_MIN);
 	F("%-10d\n", INT_MIN + 1);
-	F("%-10d\n", LONG_MAX - 1);
-	F("%-10d\n", LONG_MAX);
-	F("%-10d\n", LONG_MAX + 1);
-	F("%-10d\n", LONG_MIN - 1);
-	F("%-10d\n", LONG_MIN);
-	F("%-10d\n", LONG_MIN + 1);
 
 	F("%-.10d\n", -1);
 	F("%-.10d\n", 0);
@@ -419,9 +295,6 @@ void d_test(){
 	F("%-.10d\n", INT_MIN - 1);
 	F("%-.10d\n", INT_MIN);
 	F("%-.10d\n", INT_MIN + 1);
-	F("%-.10d\n", LONG_MAX - 1);
-	F("%-.10d\n", LONG_MAX);
-	F("%-.10d\n", LONG_MAX + 1);
 }
 
 void x_test(){
@@ -437,14 +310,6 @@ void x_test(){
 	F("%x\n", INT_MIN - 1);
 	F("%x\n", INT_MIN);
 	F("%x\n", INT_MIN + 1);
-	F("%x\n", LONG_MAX - 1);
-	F("%x\n", LONG_MAX);
-	F("%x\n", LONG_MAX + 1);
-	F("%x\n", LONG_MIN - 1);
-	F("%x\n", LONG_MIN);
-	F("%x\n", LONG_MIN + 1);
-
-	F("% 10x\n", -1);
 	F("%10x\n", 0);
 	F("%10x\n", 1);
 	F("%10x\n", 13);
@@ -455,12 +320,6 @@ void x_test(){
 	F("%10x\n", INT_MIN - 1);
 	F("%10x\n", INT_MIN);
 	F("%10x\n", INT_MIN + 1);
-	F("%10x\n", LONG_MAX - 1);
-	F("%10x\n", LONG_MAX);
-	F("%10x\n", LONG_MAX + 1);
-	F("%10x\n", LONG_MIN - 1);
-	F("%10x\n", LONG_MIN);
-	F("%10x\n", LONG_MIN + 1);
 
 	F("%.10x\n", -1);
 	F("%.10x\n", 0);
@@ -473,12 +332,6 @@ void x_test(){
 	F("%.10x\n", INT_MIN - 1);
 	F("%.10x\n", INT_MIN);
 	F("%.10x\n", INT_MIN + 1);
-	F("%.10x\n", LONG_MAX - 1);
-	F("%.10x\n", LONG_MAX);
-	F("%.10x\n", LONG_MAX + 1);
-	F("%.10x\n", LONG_MIN - 1);
-	F("%.10x\n", LONG_MIN);
-	F("%.10x\n", LONG_MIN + 1);
 
 	F("%0.0x\n", -1);
 	F("%0.0x\n", 0);
@@ -491,12 +344,6 @@ void x_test(){
 	F("%0.0x\n", INT_MIN - 1);
 	F("%0.0x\n", INT_MIN);
 	F("%0.0x\n", INT_MIN + 1);
-	F("%0.0x\n", LONG_MAX - 1);
-	F("%0.0x\n", LONG_MAX);
-	F("%0.0x\n", LONG_MAX + 1);
-	F("%0.0x\n", LONG_MIN - 1);
-	F("%0.0x\n", LONG_MIN);
-	F("%0.0x\n", LONG_MIN + 1);
 
 	F("%.x\n", -1);
 	F("%.x\n", 0);
@@ -509,49 +356,6 @@ void x_test(){
 	F("%.x\n", INT_MIN - 1);
 	F("%.x\n", INT_MIN);
 	F("%.x\n", INT_MIN + 1);
-	F("%.x\n", LONG_MAX - 1);
-	F("%.x\n", LONG_MAX);
-	F("%.x\n", LONG_MAX + 1);
-	F("%.x\n", LONG_MIN - 1);
-	F("%.x\n", LONG_MIN);
-	F("%.x\n", LONG_MIN + 1);
-
-	F("% x\n", -1);
-	F("% x\n", 0);
-	F("% x\n", 1);
-	F("% x\n", 13);
-	F("% x\n", -16);
-	F("% x\n", INT_MAX - 1);
-	F("% x\n", INT_MAX);
-	F("% x\n", INT_MAX + 1);
-	F("% x\n", INT_MIN - 1);
-	F("% x\n", INT_MIN);
-	F("% x\n", INT_MIN + 1);
-	F("% x\n", LONG_MAX - 1);
-	F("% x\n", LONG_MAX);
-	F("% x\n", LONG_MAX + 1);
-	F("% x\n", LONG_MIN - 1);
-	F("% x\n", LONG_MIN);
-	F("% x\n", LONG_MIN + 1);
-
-	F("%+x\n", -1);
-	F("%+x\n", 0);
-	F("%+x\n", 1);
-	F("%+x\n", 13);
-	F("%+x\n", -16);
-	F("%+x\n", INT_MAX - 1);
-	F("%+x\n", INT_MAX);
-	F("%+x\n", INT_MAX + 1);
-	F("%+x\n", INT_MIN - 1);
-	F("%+x\n", INT_MIN);
-	F("%+x\n", INT_MIN + 1);
-	F("%+x\n", LONG_MAX - 1);
-	F("%+x\n", LONG_MAX);
-	F("%+x\n", LONG_MAX + 1);
-	F("%+x\n", LONG_MIN - 1);
-	F("%+x\n", LONG_MIN);
-	F("%+x\n", LONG_MIN + 1);
-
 
 	F("%0x\n", -1);
 	F("%0x\n", 0);
@@ -564,14 +368,6 @@ void x_test(){
 	F("%0x\n", INT_MIN - 1);
 	F("%0x\n", INT_MIN);
 	F("%0x\n", INT_MIN + 1);
-	F("%0x\n", LONG_MAX - 1);
-	F("%0x\n", LONG_MAX);
-	F("%0x\n", LONG_MAX + 1);
-	F("%0x\n", LONG_MIN - 1);
-	F("%0x\n", LONG_MIN);
-	F("%0x\n", LONG_MIN + 1);
-
-	F("%0 10x\n", -1);
 	F("%010x\n", 0);
 	F("%010x\n", 1);
 	F("%010x\n", 13);
@@ -582,12 +378,6 @@ void x_test(){
 	F("%010x\n", INT_MIN - 1);
 	F("%010x\n", INT_MIN);
 	F("%010x\n", INT_MIN + 1);
-	F("%010x\n", LONG_MAX - 1);
-	F("%010x\n", LONG_MAX);
-	F("%010x\n", LONG_MAX + 1);
-	F("%010x\n", LONG_MIN - 1);
-	F("%010x\n", LONG_MIN);
-	F("%010x\n", LONG_MIN + 1);
 
 	F("%0.10x\n", -1);
 	F("%0.10x\n", 0);
@@ -600,12 +390,6 @@ void x_test(){
 	F("%0.10x\n", INT_MIN - 1);
 	F("%0.10x\n", INT_MIN);
 	F("%0.10x\n", INT_MIN + 1);
-	F("%0.10x\n", LONG_MAX - 1);
-	F("%0.10x\n", LONG_MAX);
-	F("%0.10x\n", LONG_MAX + 1);
-	F("%0.10x\n", LONG_MIN - 1);
-	F("%0.10x\n", LONG_MIN);
-	F("%0.10x\n", LONG_MIN + 1);
 
 	F("%00.0x\n", -1);
 	F("%00.0x\n", 0);
@@ -618,13 +402,6 @@ void x_test(){
 	F("%00.0x\n", INT_MIN - 1);
 	F("%00.0x\n", INT_MIN);
 	F("%00.0x\n", INT_MIN + 1);
-	F("%00.0x\n", LONG_MAX - 1);
-	F("%00.0x\n", LONG_MAX);
-	F("%00.0x\n", LONG_MAX + 1);
-	F("%00.0x\n", LONG_MIN - 1);
-	F("%00.0x\n", LONG_MIN);
-	F("%00.0x\n", LONG_MIN + 1);
-
 	F("%0.x\n", -1);
 	F("%0.x\n", 0);
 	F("%0.x\n", 1);
@@ -636,48 +413,6 @@ void x_test(){
 	F("%0.x\n", INT_MIN - 1);
 	F("%0.x\n", INT_MIN);
 	F("%0.x\n", INT_MIN + 1);
-	F("%0.x\n", LONG_MAX - 1);
-	F("%0.x\n", LONG_MAX);
-	F("%0.x\n", LONG_MAX + 1);
-	F("%0.x\n", LONG_MIN - 1);
-	F("%0.x\n", LONG_MIN);
-	F("%0.x\n", LONG_MIN + 1);
-
-	F("%0 x\n", -1);
-	F("%0 x\n", 0);
-	F("%0 x\n", 1);
-	F("%0 x\n", 13);
-	F("%0 x\n", -16);
-	F("%0 x\n", INT_MAX - 1);
-	F("%0 x\n", INT_MAX);
-	F("%0 x\n", INT_MAX + 1);
-	F("%0 x\n", INT_MIN - 1);
-	F("%0 x\n", INT_MIN);
-	F("%0 x\n", INT_MIN + 1);
-	F("%0 x\n", LONG_MAX - 1);
-	F("%0 x\n", LONG_MAX);
-	F("%0 x\n", LONG_MAX + 1);
-	F("%0 x\n", LONG_MIN - 1);
-	F("%0 x\n", LONG_MIN);
-	F("%0 x\n", LONG_MIN + 1);
-
-	F("%0+x\n", -1);
-	F("%0+x\n", 0);
-	F("%0+x\n", 1);
-	F("%0+x\n", 13);
-	F("%0+x\n", -16);
-	F("%0+x\n", INT_MAX - 1);
-	F("%0+x\n", INT_MAX);
-	F("%0+x\n", INT_MAX + 1);
-	F("%0+x\n", INT_MIN - 1);
-	F("%0+x\n", INT_MIN);
-	F("%0+x\n", INT_MIN + 1);
-	F("%0+x\n", LONG_MAX - 1);
-	F("%0+x\n", LONG_MAX);
-	F("%0+x\n", LONG_MAX + 1);
-	F("%0+x\n", LONG_MIN - 1);
-	F("%0+x\n", LONG_MIN);
-	F("%0+x\n", LONG_MIN + 1);
 
 
 	F("%-x\n", -1);
@@ -691,14 +426,7 @@ void x_test(){
 	F("%-x\n", INT_MIN - 1);
 	F("%-x\n", INT_MIN);
 	F("%-x\n", INT_MIN + 1);
-	F("%-x\n", LONG_MAX - 1);
-	F("%-x\n", LONG_MAX);
-	F("%-x\n", LONG_MAX + 1);
-	F("%-x\n", LONG_MIN - 1);
-	F("%-x\n", LONG_MIN);
-	F("%-x\n", LONG_MIN + 1);
 
-	F("%- 10x\n", -1);
 	F("%-10x\n", 0);
 	F("%-10x\n", 1);
 	F("%-10x\n", 13);
@@ -709,12 +437,6 @@ void x_test(){
 	F("%-10x\n", INT_MIN - 1);
 	F("%-10x\n", INT_MIN);
 	F("%-10x\n", INT_MIN + 1);
-	F("%-10x\n", LONG_MAX - 1);
-	F("%-10x\n", LONG_MAX);
-	F("%-10x\n", LONG_MAX + 1);
-	F("%-10x\n", LONG_MIN - 1);
-	F("%-10x\n", LONG_MIN);
-	F("%-10x\n", LONG_MIN + 1);
 
 	F("%-.10x\n", -1);
 	F("%-.10x\n", 0);
@@ -727,20 +449,15 @@ void x_test(){
 	F("%-.10x\n", INT_MIN - 1);
 	F("%-.10x\n", INT_MIN);
 	F("%-.10x\n", INT_MIN + 1);
-	F("%-.10x\n", LONG_MAX - 1);
-	F("%-.10x\n", LONG_MAX);
-	F("%-.10x\n", LONG_MAX + 1);
-
 }
 
 int main()
 {
-	int res;
 	/* F("%p\n", (unsigned long long)0); */
 	/* F("%.0p\n", (unsigned long long)0); */
-	/* x_test(); */
-	/* c_test(); */
-	/* percent_test(); */
-	/* s_test(); */
-	F("%2147483645d\n", 1);
+	x_test();
+	c_test();
+	percent_test();
+	s_test();
+	/* F("%2147483645d\n", 1); */
 }

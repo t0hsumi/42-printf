@@ -2,24 +2,29 @@
 
 void my_putchar(int c, int len)
 {
-	char str[1<<22 + 1];
-	int i;
-
-	i = 0;
-	while (i < len && i <= 1<<22)
+	char str[len+1];
+	int i = 0;
+	while (i < len)
 		str[i++] = c;
-	str[i] = '\0';
-	if (len < 1<<22)
-		write(1, str, len);
-	else
-	{
-		while (len > 1<<22)
-		{
-			write(1, str, 1<<22);
-			len -= 1<<22;
-		}
-		write(1, str, len);
-	}
+	write(1, str, len);
+	/* char str[1 + (1<<16)]; */
+	/* int i; */
+
+	/* i = 0; */
+	/* while (i < len && i <= 1<<16) */
+	/* 	str[i++] = c; */
+	/* str[i] = '\0'; */
+	/* if (len < 1<<16) */
+	/* 	write(1, str, len); */
+	/* else */
+	/* { */
+	/* 	while (len > 1<<16) */
+	/* 	{ */
+	/* 		write(1, str, 1<<16); */
+	/* 		len -= 1<<16; */
+	/* 	} */
+	/* 	write(1, str, len); */
+	/* } */
 }
 
 void my_putstr(char *str, int len)
