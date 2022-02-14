@@ -449,6 +449,8 @@ void x_test(){
 int main()
 {
 	int res;
+	F("%2147483645d\n", 12);
+	/* F("%.0d\n", 0); */
 	/* x_test(); */
 	/* c_test(); */
 	/* percent_test(); */
