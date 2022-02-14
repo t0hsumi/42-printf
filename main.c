@@ -15,5 +15,5 @@ printf("%d\n", res);
 int main()
 {
 	int res;
-	F("[%-2p]\n", 0, 0);
+	F("[%7d]\n", -11);
 }
