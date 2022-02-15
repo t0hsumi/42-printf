@@ -2,3 +2,6 @@ printf.exe
 *.txt
 printfTester/
 42TESTERS-PRINTF
+pft/
+42-ft_printf/
+printf-tester/

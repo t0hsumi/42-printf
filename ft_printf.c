@@ -55,8 +55,6 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 		num = my_strchr("#0- +", fmt[(*head)]);
 	}
 	convert.field = ft_substr_n(fmt, head);
-	if (convert.field >= INT_MAX - 1)
-		return (INT_MIN);
 	if (fmt[(*head)] == '.')
 	{
 		(*head)++;
