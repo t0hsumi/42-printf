@@ -1,21 +1,9 @@
 #include "ft_printf.h"
 
-/* void my_putchar(int c, int len) */
-/* { */
-/* 	char str[len + 1]; */
-/* 	int i; */
-
-/* 	i = 0; */
-/* 	while (i < len) */
-/* 		str[i++] = c; */
-/* 	str[i] = '\0'; */
-/* 	write(1, str, len); */
-/* } */
-
-void my_putchar(int c, int len)
+void	my_putchar(int c, int len)
 {
-	char str[2];
-	int i;
+	char	str[2];
+	int		i;
 
 	i = 0;
 	str[0] = c;
@@ -24,27 +12,28 @@ void my_putchar(int c, int len)
 		write(1, str, 1);
 }
 
-void my_putstr(char *str, int len)
+void	my_putstr(char *str, int len)
 {
 	write(1, str, len);
 }
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	if ('0' <= c && c <= '9')
-		return 1;
+		return (1);
 	else
-		return 0;
+		return (0);
 }
-void   ft_putnbr_fd(int n, int fd)
+
+void	ft_putnbr_fd(int n, int fd)
 {
-	long   ln;
+	long	ln;
 
 	ln = n;
 	if (ln == INT_MIN)
 	{
 		write(1, "2147483648", 10);
-		return;
+		return ;
 	}
 	if (ln < 0)
 	{
@@ -60,7 +49,7 @@ void   ft_putnbr_fd(int n, int fd)
 		write(fd, &"0123456789"[(int)ln], 1);
 }
 
-void   ft_putnbr_u_fd(unsigned long long n, int fd)
+void	ft_putnbr_u_fd(unsigned long long n, int fd)
 {
 	if (n >= 10)
 	{
@@ -71,7 +60,7 @@ void   ft_putnbr_u_fd(unsigned long long n, int fd)
 		write(fd, &"0123456789"[(int)n], 1);
 }
 
-void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
+void	ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
 {
 	if (n >= 16)
 	{
@@ -84,13 +73,12 @@ void   ft_putnbr_hex_fd(unsigned long long n, int fd, t_flag *convert)
 		write(fd, &"0123456789ABCDEF"[(int)n], 1);
 }
 
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t res;
+	size_t	res;
 
 	res = 0;
 	while (str[res])
 		res++;
-	return res;
+	return (res);
 }
-

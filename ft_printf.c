@@ -1,6 +1,6 @@
 #include "./ft_printf.h"
 
-void ft_init_conv(t_flag *convert)
+void	ft_init_conv(t_flag *convert)
 {
 	convert->flag[0] = 0;
 	convert->flag[1] = 0;
@@ -14,36 +14,36 @@ void ft_init_conv(t_flag *convert)
 	convert->putlen = 0;
 }
 
-int my_strchr(const char *s, int c)
+int	my_strchr(const char *s, int c)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (s[index])
 	{
 		if (s[index] == c)
-			return index;
+			return (index);
 		index++;
 	}
-	return -1;
+	return (-1);
 }
 
-int ft_substr_n(const char *fmt, int *head)
+int	ft_substr_n(const char *fmt, int *head)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	if (!ft_isdigit(fmt[(*head)]))
-		return -1;
+		return (-1);
 	while (ft_isdigit(fmt[(*head)]))
 		res = res * 10 + (fmt[(*head)++] - '0');
 	return (res);
 }
 
-int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
+int	ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 {
-	t_flag convert;
-	int num;
+	t_flag	convert;
+	int		num;
 
 	(*head)++;
 	ft_init_conv(&convert);
@@ -66,7 +66,7 @@ int ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 	return (ft_conv_print(fmt, tail, head, ap, &convert));
 }
 
-int ft_print_str(const char *fmt, int *tail, int *head)
+int	ft_print_str(const char *fmt, int *tail, int *head)
 {
 	while (fmt[(*head)] != '%' && fmt[(*head)])
 		(*head)++;
@@ -74,12 +74,12 @@ int ft_print_str(const char *fmt, int *tail, int *head)
 	return ((*head) - (*tail));
 }
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
-	va_list ap;
-	int res;
-	int head;
-	int tail;
+	va_list	ap;
+	int		res;
+	int		head;
+	int		tail;
 
 	res = 0;
 	head = 0;
@@ -95,6 +95,5 @@ int ft_printf(const char *fmt, ...)
 			res += ft_proc_per(fmt, &tail, &head, &ap);
 	}
 	va_end(ap);
-	return ((res <= -1 ? -1 : res));
+	return (res);
 }
-

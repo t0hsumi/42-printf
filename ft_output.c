@@ -1,9 +1,12 @@
 #include "ft_printf.h"
 
-void ft_percent(t_flag *convert)
+void	ft_percent(t_flag *convert)
 {
 	convert->putlen = 1;
-	convert->field = (convert->field <= 1 ? 0 : convert->field - 1);
+	if (convert->field <= 1)
+		convert->field = 0;
+	else
+		convert->field -= 1;
 	convert->acc = 0;
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
@@ -14,29 +17,33 @@ void ft_percent(t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-int ft_non_specifier(const char *fmt, int *tail, int *head, t_flag *convert)
+int	ft_non_specifier(const char *fmt, int *tail, int *head, t_flag *convert)
 {
 	write(1, &fmt[(*tail)], (*head) - (*tail));
 	convert->putlen = (*head) - (*tail);
 	return (convert->putlen);
 }
 
-void ft_int(va_list *ap, t_flag *convert)
+void	ft_int(va_list *ap, t_flag *convert)
 {
-	long long num;
-	int digit_len = 0;
-	long long output;
-	long long tmp;
+	long long	num;
+	int			digit_len;
+	long long	output;
+	long long	tmp;
 
+	digit_len = 0;
 	num = va_arg(*ap, int);
 	output = num;
 	tmp = output;
 	convert->putlen = (num >= 0 ? 0 : 1);
 	if (num >= 0 && (convert->flag[SPACE] || convert->flag[PLUS]))
 		convert->putlen += 1;
-	if (num == 0) digit_len = 1;
-	else{
-		while (num){
+	if (num == 0)
+		digit_len = 1;
+	else
+	{
+		while (num)
+		{
 			num /= 10;
 			digit_len++;
 		}
@@ -54,7 +61,7 @@ void ft_int(va_list *ap, t_flag *convert)
 			write(1, " ", 1);
 		if (convert->flag[MINUS])
 			my_putchar(' ', convert->field);
-		return;
+		return ;
 	}
 	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
 	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
@@ -62,7 +69,8 @@ void ft_int(va_list *ap, t_flag *convert)
 		convert->field -= 1;
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
-	if (output < 0){
+	if (output < 0)
+	{
 		write(1, "-", 1);
 		output *= -1;
 	}
@@ -78,16 +86,19 @@ void ft_int(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-void ft_hex(va_list *ap, t_flag *convert)
+void	ft_hex(va_list *ap, t_flag *convert)
 {
-	unsigned long long num;
-	unsigned long long output;
+	unsigned long long	num;
+	unsigned long long	output;
 
 	num = (unsigned int)va_arg(*ap, int);
 	output = num;
-	if (num == 0) convert->putlen = 1;
-	else{
-		while (num){
+	if (num == 0)
+		convert->putlen = 1;
+	else
+	{
+		while (num)
+		{
 			num /= 16;
 			convert->putlen++;
 		}
@@ -99,9 +110,9 @@ void ft_hex(va_list *ap, t_flag *convert)
 		convert->putlen -= 1;
 		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
 		my_putchar(' ', convert->field);
-		return;
+		return ;
 	}
-	convert->acc = (convert->acc <=  convert->putlen ? 0 : convert->acc - convert->putlen);
+	convert->acc = (convert->acc <= convert->putlen ? 0 : convert->acc - convert->putlen);
 	convert->field = (convert->field <= convert->putlen + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
@@ -115,18 +126,21 @@ void ft_hex(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-void ft_unsigned(va_list *ap, t_flag *convert)
+void	ft_unsigned(va_list *ap, t_flag *convert)
 {
-	unsigned long long num;
-	unsigned long long output;
+	unsigned long long	num;
+	unsigned long long	output;
 
 	num = (unsigned int)va_arg(*ap, int);
 	output = num;
-	if (num == 0) convert->putlen = 1;
-	else{
-		while (num){
+	if (num == 0)
+		convert->putlen = 1;
+	else
+	{
+		while (num)
+		{
 			num /= 10;
-			convert->putlen++; 
+			convert->putlen++;
 		}
 	}
 	if (convert->acc == 0 && output == 0)
@@ -134,9 +148,9 @@ void ft_unsigned(va_list *ap, t_flag *convert)
 		convert->putlen -= 1;
 		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
 		my_putchar(' ', convert->field);
-		return;
+		return ;
 	}
-	convert->acc = (convert->acc <= convert->putlen ? 0 : convert->acc - convert->putlen); 
+	convert->acc = (convert->acc <= convert->putlen ? 0 : convert->acc - convert->putlen);
 	convert->field = (convert->field <= convert->putlen + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
 		my_putchar(' ', convert->field);
@@ -148,9 +162,9 @@ void ft_unsigned(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-void ft_char(va_list *ap, t_flag *convert)
+void	ft_char(va_list *ap, t_flag *convert)
 {
-	unsigned char c;
+	unsigned char	c;
 
 	c = (unsigned char)va_arg(*ap, int);
 	convert->putlen = 1;
@@ -165,9 +179,9 @@ void ft_char(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-void ft_str(va_list *ap, t_flag *convert)
+void	ft_str(va_list *ap, t_flag *convert)
 {
-	char *str;
+	char	*str;
 
 	str = (char *)va_arg(*ap, char *);
 	if (!str)
@@ -200,17 +214,21 @@ void ft_str(va_list *ap, t_flag *convert)
 	}
 }
 
-void ft_pointer(va_list *ap, t_flag *convert)
+void	ft_pointer(va_list *ap, t_flag *convert)
 {
-	unsigned long long num;
-	int digit_len = 0;
-	unsigned long long output;
+	unsigned long long	num;
+	int					digit_len;
+	unsigned long long	output;
 
+	digit_len = 0;
 	num = (unsigned long long)va_arg(*ap, unsigned long long);
 	output = num;
-	if (num == 0) digit_len = 1;
-	else{
-		while (num){
+	if (num == 0)
+		digit_len = 1;
+	else
+	{
+		while (num)
+		{
 			num /= 16;
 			digit_len++;
 		}
@@ -221,7 +239,7 @@ void ft_pointer(va_list *ap, t_flag *convert)
 		convert->putlen -= 1;
 		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
 		my_putchar(' ', convert->field);
-		return;
+		return ;
 	}
 	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
 	convert->field = (convert->field <= (convert->putlen + convert->acc) ? 0 : convert->field - convert->acc - convert->putlen);
@@ -236,7 +254,7 @@ void ft_pointer(va_list *ap, t_flag *convert)
 		my_putchar(' ', convert->field);
 }
 
-int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
+int	ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
 {
 	if (convert->specifier == -1)
 		return (ft_non_specifier(fmt, tail, head, convert));
@@ -253,6 +271,7 @@ int ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *co
 		ft_str(ap, convert);
 	else if (convert->specifier == p)
 		ft_pointer(ap, convert);
-	else ft_percent(convert);
+	else
+		ft_percent(convert);
 	return (convert->field + convert->putlen + convert->acc);
 }
