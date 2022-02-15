@@ -14,32 +14,6 @@ void	ft_init_conv(t_flag *convert)
 	convert->putlen = 0;
 }
 
-int	my_strchr(const char *s, int c)
-{
-	int	index;
-
-	index = 0;
-	while (s[index])
-	{
-		if (s[index] == c)
-			return (index);
-		index++;
-	}
-	return (-1);
-}
-
-int	ft_substr_n(const char *fmt, int *head)
-{
-	int	res;
-
-	res = 0;
-	if (!ft_isdigit(fmt[(*head)]))
-		return (-1);
-	while (ft_isdigit(fmt[(*head)]))
-		res = res * 10 + (fmt[(*head)++] - '0');
-	return (res);
-}
-
 int	ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 {
 	t_flag	convert;

@@ -1,22 +1,5 @@
 #include "ft_printf.h"
 
-void	my_putchar(int c, int len)
-{
-	char	str[2];
-	int		i;
-
-	i = 0;
-	str[0] = c;
-	str[1] = '\0';
-	while (i++ < len)
-		write(1, str, 1);
-}
-
-void	my_putstr(char *str, int len)
-{
-	write(1, str, len);
-}
-
 int	ft_isdigit(char c)
 {
 	if ('0' <= c && c <= '9')

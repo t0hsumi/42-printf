@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <unistd.h>
 
 void	ft_percent(t_flag *convert)
 {
@@ -35,7 +36,10 @@ void	ft_int(va_list *ap, t_flag *convert)
 	num = va_arg(*ap, int);
 	output = num;
 	tmp = output;
-	convert->putlen = (num >= 0 ? 0 : 1);
+	if (num >= 0)
+		convert->putlen = 0;
+	else
+		convert->putlen = 1;
 	if (num >= 0 && (convert->flag[SPACE] || convert->flag[PLUS]))
 		convert->putlen += 1;
 	if (num == 0)
@@ -52,7 +56,10 @@ void	ft_int(va_list *ap, t_flag *convert)
 	if (convert->acc == 0 && output == 0)
 	{
 		convert->putlen -= 1;
-		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
+		if (convert->field <= convert->putlen)
+			convert->field = 0;
+		else
+			convert->field = convert->field - convert->putlen;
 		if (!convert->flag[MINUS])
 			my_putchar(' ', convert->field);
 		if (convert->flag[PLUS])
@@ -63,8 +70,14 @@ void	ft_int(va_list *ap, t_flag *convert)
 			my_putchar(' ', convert->field);
 		return ;
 	}
-	convert->acc = (convert->acc <= digit_len ? 0 : convert->acc - digit_len);
-	convert->field = (convert->field <= digit_len + convert->acc ? 0 : convert->field - convert->acc - digit_len);
+	if (convert->acc <= digit_len)
+		convert->acc = 0;
+	else
+		convert->acc = convert->acc - digit_len;
+	if (convert->field <= digit_len + convert->acc)
+		convert->field = 0;
+	else
+		convert->field = convert->field - convert->acc - digit_len;
 	if (output < 0 && convert->field > 0)
 		convert->field -= 1;
 	if (!convert->flag[ZERO] && !convert->flag[MINUS])
