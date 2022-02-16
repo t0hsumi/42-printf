@@ -48,7 +48,7 @@ void	ft_int(va_list *ap, t_flag *convert);
 void	ft_hex(va_list *ap, t_flag *convert);
 void	ft_unsigned(va_list *ap, t_flag *convert);
 void	ft_pointer(va_list *ap, t_flag *convert);
-void	ft_digit_count(int num, int *digit_len, t_flag *convert);
+void	ft_digit_print(t_flag *convert, int output);
 
 void	ft_percent(t_flag *convert);
 int		ft_non_specifier(const char *fmt, int *tail \

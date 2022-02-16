@@ -1,5 +1,14 @@
 #include "ft_printf.h"
 
+void	ft_digit_print(t_flag *convert, int output)
+{
+	my_putchar('0', convert->acc);
+	if (convert->specifier == d || convert->specifier == i)
+		ft_putnbr_fd(output, 1);
+	if (convert->flag[MINUS])
+		my_putchar(' ', convert->field);
+}
+
 int	my_strchr(const char *s, int c)
 {
 	int	index;
