@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DEBUG = #-g -fsanitize=address
 
-SRCS = ft_printf.c ft_output.c ft_utils.c ft_utils_2.c
+SRCS = ft_printf.c ft_output.c ft_utils.c ft_utils_2.c ft_str_print.c ft_print_other.c
 OBJS = $(SRCS:.c=.o)
 
 T_SRCS = main.c

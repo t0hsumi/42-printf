@@ -6,8 +6,6 @@
 # include <stdlib.h>
 # include <limits.h>
 
-# include <stdio.h>
-
 typedef struct s_flag
 {
 	int	flag[5];
@@ -46,15 +44,19 @@ int		ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap);
 void	ft_init_conv(t_flag *convert);
 
 int		ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert);
-int		ft_non_specifier(const char *fmt, int *tail \
-		, int *head, t_flag *convert);
 void	ft_int(va_list *ap, t_flag *convert);
 void	ft_hex(va_list *ap, t_flag *convert);
 void	ft_unsigned(va_list *ap, t_flag *convert);
+void	ft_pointer(va_list *ap, t_flag *convert);
+void	ft_digit_count(int num, int *digit_len, t_flag *convert);
+
+void	ft_percent(t_flag *convert);
+int		ft_non_specifier(const char *fmt, int *tail \
+		, int *head, t_flag *convert);
+
+void	ft_no_acc_str(char *str, t_flag *convert);
 void	ft_char(va_list *ap, t_flag *convert);
 void	ft_str(va_list *ap, t_flag *convert);
-void	ft_pointer(va_list *ap, t_flag *convert);
-void	ft_percent(t_flag *convert);
 
 int		ft_isdigit(char c);
 void	ft_putnbr_fd(int n, int fd);

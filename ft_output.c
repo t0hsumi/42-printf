@@ -1,29 +1,4 @@
 #include "ft_printf.h"
-#include <unistd.h>
-
-void	ft_percent(t_flag *convert)
-{
-	convert->putlen = 1;
-	if (convert->field <= 1)
-		convert->field = 0;
-	else
-		convert->field -= 1;
-	convert->acc = 0;
-	if (!convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-	else if (convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar('0', convert->field);
-	write(1, "%", 1);
-	if (convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-}
-
-int	ft_non_specifier(const char *fmt, int *tail, int *head, t_flag *convert)
-{
-	write(1, &fmt[(*tail)], (*head) - (*tail));
-	convert->putlen = (*head) - (*tail);
-	return (convert->putlen);
-}
 
 void	ft_int(va_list *ap, t_flag *convert)
 {
@@ -173,58 +148,6 @@ void	ft_unsigned(va_list *ap, t_flag *convert)
 	ft_putnbr_u_fd(output, 1);
 	if (convert->flag[MINUS])
 		my_putchar(' ', convert->field);
-}
-
-void	ft_char(va_list *ap, t_flag *convert)
-{
-	unsigned char	c;
-
-	c = (unsigned char)va_arg(*ap, int);
-	convert->putlen = 1;
-	convert->acc = 0;
-	convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
-	if (!convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-	else if (convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar('0', convert->field);
-	my_putchar(c, 1);
-	if (convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-}
-
-void	ft_str(va_list *ap, t_flag *convert)
-{
-	char	*str;
-
-	str = (char *)va_arg(*ap, char *);
-	if (!str)
-		str = "(null)";
-	convert->putlen = ft_strlen(str);
-	if (convert->acc == -1 || convert->acc >= convert->putlen)
-	{
-		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
-		convert->acc = 0;
-		if (!convert->flag[MINUS] && !convert->flag[ZERO])
-			my_putchar(' ', convert->field);
-		else if (!convert->flag[MINUS] && convert->flag[ZERO])
-			my_putchar('0', convert->field);
-		my_putstr(str, convert->putlen);
-		if (convert->flag[MINUS])
-			my_putchar(' ', convert->field);
-	}
-	else
-	{
-		convert->putlen = convert->acc;
-		convert->field = (convert->field > convert->putlen ? convert->field - convert->putlen : 0);
-		convert->acc = 0;
-		if (!convert->flag[MINUS] && !convert->flag[ZERO])
-			my_putchar(' ', convert->field);
-		else if (!convert->flag[MINUS] && convert->flag[ZERO])
-			my_putchar('0', convert->field);
-		my_putstr(str, convert->putlen);
-		if (convert->flag[MINUS])
-			my_putchar(' ', convert->field);
-	}
 }
 
 void	ft_pointer(va_list *ap, t_flag *convert)
