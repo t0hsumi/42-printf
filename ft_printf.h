@@ -40,6 +40,8 @@ enum
 
 
 void	ft_int_conv_set(t_flag *convert, long long num, int *digit_len);
+void	ft_int_conv_set2(t_flag *convert, int digit_len, long long output);
+void	ft_int_print(long long output, long long num, t_flag *convert);
 
 
 int		ft_printf(const char *fmt, ...);
