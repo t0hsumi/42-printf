@@ -1,16 +1,8 @@
 #include "ft_printf.h"
 
-void	ft_int(va_list *ap, t_flag *convert)
+void	ft_int_conv_set(t_flag *convert, long long num, int *digit_len)
 {
-	long long	num;
-	int			digit_len;
-	long long	output;
-	long long	tmp;
-
-	digit_len = 0;
-	num = va_arg(*ap, int);
-	output = num;
-	tmp = output;
+	*digit_len = 0;
 	if (num >= 0)
 		convert->putlen = 0;
 	else
@@ -18,16 +10,29 @@ void	ft_int(va_list *ap, t_flag *convert)
 	if (num >= 0 && (convert->flag[SPACE] || convert->flag[PLUS]))
 		convert->putlen += 1;
 	if (num == 0)
-		digit_len = 1;
+		*digit_len = 1;
 	else
 	{
 		while (num)
 		{
 			num /= 10;
-			digit_len++;
+			(*digit_len)++;
 		}
 	}
-	convert->putlen += digit_len;
+	convert->putlen += *digit_len;
+}
+
+void	ft_int(va_list *ap, t_flag *convert)
+{
+	long long	num;
+	int			digit_len;
+	long long	output;
+	long long	tmp;
+
+	num = va_arg(*ap, int);
+	output = num;
+	tmp = output;
+	ft_int_conv_set(convert, num, &digit_len);
 	if (convert->acc == 0 && output == 0)
 	{
 		convert->putlen -= 1;

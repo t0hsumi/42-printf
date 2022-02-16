@@ -38,6 +38,10 @@ enum
 	PLUS,
 };
 
+
+void	ft_int_conv_set(t_flag *convert, long long num, int *digit_len);
+
+
 int		ft_printf(const char *fmt, ...);
 int		ft_print_str(const char *fmt, int *tail, int *head);
 int		ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap);
