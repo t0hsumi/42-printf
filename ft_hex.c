@@ -14,7 +14,7 @@ void	ft_hex(va_list *ap, t_flag *convert)
 		while (num)
 		{
 			num /= 16;
-			convert->putlen++;
+			(convert->putlen)++;
 		}
 	}
 	if (convert->flag[SHARP] && output != 0)
