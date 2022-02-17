@@ -38,18 +38,16 @@ enum
 	PLUS,
 };
 
-
 void	ft_int_conv_set(t_flag *convert, long long num, int *digit_len);
 void	ft_int_conv_set2(t_flag *convert, int digit_len, long long output);
 void	ft_int_print(long long output, long long num, t_flag *convert);
-
 
 int		ft_printf(const char *fmt, ...);
 int		ft_print_str(const char *fmt, int *tail, int *head);
 int		ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap);
 void	ft_init_conv(t_flag *convert);
 
-int	ft_conv_print(int *head, va_list *ap, t_flag *convert);
+int		ft_conv_print(int *head, va_list *ap, t_flag *convert);
 void	ft_int(va_list *ap, t_flag *convert);
 void	ft_hex(va_list *ap, t_flag *convert);
 void	ft_unsigned(va_list *ap, t_flag *convert);
