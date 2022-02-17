@@ -449,8 +449,8 @@ void x_test(){
 int main()
 {
 	x_test();
-	/* c_test(); */
-	/* percent_test(); */
-	/* s_test(); */
-	/* d_test(); */
+	c_test();
+	percent_test();
+	s_test();
+	d_test();
 }
