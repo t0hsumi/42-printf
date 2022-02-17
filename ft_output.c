@@ -1,41 +1,5 @@
 #include "ft_printf.h"
 
-void	ft_unsigned(va_list *ap, t_flag *convert)
-{
-	unsigned long long	num;
-	unsigned long long	output;
-
-	num = (unsigned int)va_arg(*ap, int);
-	output = num;
-	if (num == 0)
-		convert->putlen = 1;
-	else
-	{
-		while (num)
-		{
-			num /= 10;
-			convert->putlen++;
-		}
-	}
-	if (convert->acc == 0 && output == 0)
-	{
-		convert->putlen -= 1;
-		convert->field = (convert->field <= convert->putlen ? 0 : convert->field - convert->putlen);
-		my_putchar(' ', convert->field);
-		return ;
-	}
-	convert->acc = (convert->acc <= convert->putlen ? 0 : convert->acc - convert->putlen);
-	convert->field = (convert->field <= convert->putlen + convert->acc ? 0 : convert->field - convert->acc - convert->putlen);
-	if (!convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-	else if (convert->flag[ZERO] && !convert->flag[MINUS])
-		my_putchar('0', convert->field);
-	my_putchar('0', convert->acc);
-	ft_putnbr_u_fd(output, 1);
-	if (convert->flag[MINUS])
-		my_putchar(' ', convert->field);
-}
-
 int	ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
 {
 	if (convert->specifier == -1)
