@@ -19,7 +19,6 @@ int	ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 	t_flag	convert;
 	int		num;
 
-	(*head)++;
 	ft_init_conv(&convert);
 	num = my_strchr("#0- +", fmt[(*head)]);
 	while (num >= 0)
@@ -29,6 +28,8 @@ int	ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 		num = my_strchr("#0- +", fmt[(*head)]);
 	}
 	convert.field = ft_substr_n(fmt, head);
+	if (convert.field == INT_MAX)
+		return (INT_MIN);
 	if (fmt[(*head)] == '.')
 	{
 		(*head)++;
@@ -68,8 +69,13 @@ int	ft_printf(const char *fmt, ...)
 		if (fmt[head] != '%')
 			res += ft_print_str(fmt, &tail, &head);
 		else
+		{
+			head++;
 			res += ft_proc_per(fmt, &tail, &head, &ap);
+		}
 	}
 	va_end(ap);
+	if (res < -1)
+		res = -1;
 	return (res);
 }

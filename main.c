@@ -135,6 +135,18 @@ void d_test(){
 	F("%0.0d\n", INT_MIN);
 	F("%0.0d\n", INT_MIN + 1);
 
+	F("%.0d\n", -1);
+	F("%.0d\n", 0);
+	F("%.0d\n", 1);
+	F("%.0d\n", 13);
+	F("%.0d\n", -16);
+	F("%.0d\n", INT_MAX - 1);
+	F("%.0d\n", INT_MAX);
+	F("%.0d\n", INT_MAX + 1);
+	F("%.0d\n", INT_MIN - 1);
+	F("%.0d\n", INT_MIN);
+	F("%.0d\n", INT_MIN + 1);
+
 	F("%.d\n", -1);
 	F("%.d\n", 0);
 	F("%.d\n", 1);
@@ -448,6 +460,8 @@ void x_test(){
 
 int main()
 {
+	/* int res; */
+	/* F("%2147483646d\n", 1); */
 	x_test();
 	c_test();
 	percent_test();
