@@ -1,9 +1,7 @@
 #include "ft_printf.h"
 
-int	ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert)
+int	ft_conv_print(int *head, va_list *ap, t_flag *convert)
 {
-	if (convert->specifier == -1)
-		return (ft_non_specifier(fmt, tail, head, convert));
 	(*head)++;
 	if (convert->specifier == d || convert->specifier == i)
 		ft_int(ap, convert);

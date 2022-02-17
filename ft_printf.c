@@ -37,7 +37,9 @@ int	ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap)
 			convert.acc = 0;
 	}
 	convert.specifier = my_strchr("cspdiuxX%", fmt[(*head)]);
-	return (ft_conv_print(fmt, tail, head, ap, &convert));
+	if (convert.specifier == -1)
+		return (ft_non_specifier(fmt, tail, head, &convert));
+	return (ft_conv_print(head, ap, &convert));
 }
 
 int	ft_print_str(const char *fmt, int *tail, int *head)

@@ -49,7 +49,7 @@ int		ft_print_str(const char *fmt, int *tail, int *head);
 int		ft_proc_per(const char *fmt, int *tail, int *head, va_list *ap);
 void	ft_init_conv(t_flag *convert);
 
-int		ft_conv_print(const char *fmt, int *tail, int *head, va_list *ap, t_flag *convert);
+int	ft_conv_print(int *head, va_list *ap, t_flag *convert);
 void	ft_int(va_list *ap, t_flag *convert);
 void	ft_hex(va_list *ap, t_flag *convert);
 void	ft_unsigned(va_list *ap, t_flag *convert);
